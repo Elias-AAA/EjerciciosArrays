@@ -2,108 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EjercicioArray : MonoBehaviour
+public class Arrays : MonoBehaviour
 {
-    public GameObject[] cubitos;
-
-    // Contador para el ejercicio 3 (desactivar de primero a último)
-    private int contadora = 0;
-
-    // Contador para el ejercicio 4 (desactivar de último a primero)
-    private int contadoraInversa;
-
-    // Contador para el ejercicio 5 (activar de primero a último)
-    private int contadorActivar = 0;
-
+    public int[] edades = new int[4];
+   
     void Start()
     {
-        /* ---------- EJERCICIO 1 ----------
-         Desactivar el primer elemento del array al iniciar la escena
-         DesactivarPrimerElemento(cubitos);
-
-         ---------- EJERCICIO 2 ----------
-         Desactivar todos los elementos del array al iniciar la escena
-         DesactivarTodosLosElementos(cubitos);
-
-         Inicializa el contador inverso (usado en el ejercicio 4)
-         contadoraInversa = cubitos.Length - 1;
-
-         ---------- EJERCICIO 5 ----------
-         Arranca con todo desactivado, para después ir activando de a uno
-        DesactivarTodosLosElementos(cubitos);
+        edades[2] = 16;
+        SquareOfIndex(edades);
+        RandomNumbers(edades, 0, 21);
     }
-*/
+
+    
     void Update()
     {
-        /* ---------- EJERCICIO 3 ----------
-         Desactivar de a uno, del primero al último, con la tecla D
-        
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (contadora < cubitos.Length)
-            {
-                cubitos[contadora].SetActive(false);
-                contadora++;
-            }
-            else
-            {
-                Debug.Log("Ya se desactivaron todos los elementos (orden normal)");
-            }
+            ClearArray(edades);
         }
-        */
 
-        /* ---------- EJERCICIO 4 ----------
-         Desactivar de a uno, del último al primero, con la tecla A
-        
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            if (contadoraInversa >= 0)
-            {
-                cubitos[contadoraInversa].SetActive(false);
-                contadoraInversa--;
-            }
-            else
-            {
-                Debug.Log("Ya se desactivaron todos los elementos (orden inverso)");
-            }
-        }
-        */
-
-        // ---------- EJERCICIO 5 ----------
-        // Activar de a uno, del primero al último, con la tecla D
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (contadorActivar < cubitos.Length)
-            {
-                cubitos[contadorActivar].SetActive(true);
-                contadorActivar++;
-            }
-            else
-            {
-                Debug.Log("Ya se activaron todos los elementos");
-            }
+            SquareOfIndex(edades);
         }
     }
 
-    // ---------- EJERCICIO 1 ----------
-    void DesactivarPrimerElemento(GameObject[] arr)
+    void ClearArray(int[] array)
     {
-        if (arr.Length > 0)
+        for (int i = 0; i < array.Length; i++)
         {
-            arr[0].SetActive(false);
-        }
-        else
-        {
-            Debug.Log("El array esta vacio");
+            array[i] = 0;
         }
     }
 
-    // ---------- EJERCICIO 2 ----------
-    void DesactivarTodosLosElementos(GameObject[] arr)
+    void SquareOfIndex(int[] array)
     {
-        for (int i = 0; i < arr.Length; i++)
+        for (int i = 0; i < array.Length; i++)
         {
-            arr[i].SetActive(false);
+            array[i] = i * i;
         }
     }
-}
+
+    void RandomNumbers(int[] array, int min, int max)
+    {
+        
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = UnityEngine.Random.Range(min, max);
+        }}
+    }
