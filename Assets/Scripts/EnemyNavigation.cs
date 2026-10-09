@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.Ai;
 public class EnemyNavigation : MonoBehaviour
 {
-    NavMeshAgent agent;
+    UnityEngine.AI.NavMeshAgent agent;
     Transform destination;
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         destination = FindObjectsOfType<CharacterController>().transform;
     }
 
